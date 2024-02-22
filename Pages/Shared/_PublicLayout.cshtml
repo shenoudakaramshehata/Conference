@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head dir="rtl" lang="ar">
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Construction Html5 Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name=author content="Themefisher">
+    <meta name=generator content="Themefisher Constra HTML Template v1.0">
+
+    <!-- Favicon
+    ================================================== -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Theme/plugins/bootstrap/bootstrap-rtl.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="~/Theme/plugins/fontawesome/css/all.min.css">
+    <!-- Animation -->
+    <link rel="stylesheet" href="~/Theme/plugins/animate-css/animate.css">
+    <!-- slick Carousel -->
+    <link rel="stylesheet" href="~/Theme/plugins/slick/slick.css">
+    <link rel="stylesheet" href="~/Theme/plugins/slick/slick-theme.css">
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="~/Theme/plugins/colorbox/colorbox.css">
+    <!-- Template styles-->
+    <link rel="stylesheet" href="~/Theme/css/style.css">
+    <link href="~/adminassets/css_rtl/arabicfont.css" rel="stylesheet" />
+    <style>
+        #footer{
+            margin-top: 50px;
+            position: fixed;
+            bottom: 0;
+            width: 100%
+         
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <div class="body-inner">
+       @* <div id="top-bar" class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 top-social text-center text-md-center">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a title="Facebook" href="https://facebbok.com/themefisher.com">
+                                    <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                                </a>
+                                <a title="Twitter" href="https://twitter.com/themefisher.com">
+                                    <span class="social-icon"><i class="fab fa-twitter"></i></span>
+                                </a>
+                                <a title="Instagram" href="https://instagram.com/themefisher.com">
+                                    <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                                </a>
+                                <a title="Linkdin" href="https://github.com/themefisher.com">
+                                    <span class="social-icon"><i class="fab fa-youtube"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/ Top social end -->
+                </div>
+                <!--/ Content row end -->
+            </div>
+            <!--/ Container end -->
+        </div>*@
+        <!--/ Topbar end -->
+        <!-- Header start -->
+        <header id="header" class="header-one">
+            <div class="bg-white" style="border-bottom: 10px solid #0098bd">
+                <div class="container">
+                    <div class="logo-area">
+                        <div class="row align-items-center">
+                            <div class="logo col-lg-12 text-center text-lg-center mb-1">
+                                <a class="d-block" href="/">
+                                    <img loading="lazy" src="~/Theme/images/Newlogo.png" alt="Constra">
+                                </a>
+                            </div><!-- logo end -->
+
+                  
+                        </div><!-- logo area end -->
+
+                    </div><!-- Row end -->
+                </div><!-- Container end -->
+            </div>
+            <!--/ Navigation end -->
+        </header>
+        <!--/ Header end -->
+        @RenderBody()
+
+
+        <footer id="footer" class="footer bg-overlay">
+       
+
+            <div class="copyright">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="copyright-info text-center" style="color:white;">
+                                <span>
+                                    جميع الحقوق محفوظة©2023 
+                                </span>
+                            </div>
+                        </div>
+
+                    
+                    </div><!-- Row end -->
+
+                    <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
+                        <button class="btn btn-primary" title="Back to Top">
+                            <i class="fa fa-angle-double-up"></i>
+                        </button>
+                    </div>
+
+                </div><!-- Container end -->
+            </div><!-- Copyright end -->
+        </footer><!-- Footer end -->
+        <!-- Javascript Files
+        ================================================== -->
+        <!-- initialize jQuery Library -->
+        <script src="~/Theme/plugins/jQuery/jquery.min.js"></script>
+        <!-- Bootstrap jQuery -->
+        <script src="~/Theme/plugins/bootstrap/bootstrap-rtl.min.js" defer></script>
+      
+        <!-- Slick Carousel -->
+        <script src="~/Theme/plugins/slick/slick.min.js"></script>
+        <script src="~/Theme/plugins/slick/slick-animation.min.js"></script>
+        <!-- Color box -->
+        <script src="~/Theme/plugins/colorbox/jquery.colorbox.js"></script>
+        <!-- shuffle -->
+        <script src="~/Theme/plugins/shuffle/shuffle.min.js" defer></script>
+
+
+        <!-- Google Map API Key-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+        <!-- Google Map Plugin-->
+        <script src="~/Theme/plugins/google-map/map.js" defer></script>
+
+        <!-- Template custom -->
+        <script src="~/Theme/js/script.js"></script>
+
+    </div><!-- Body inner end -->
+
+   @*  <script>
+        $(document).ready(function () {
+            var ctrlVideo = document.getElementById("banner-video");
+
+            $('btnPlay').click(function () 
+            {
+                if ($('btnPlay').hasClass("active")) 
+                {
+
+                    ctrlVideo.play();
+                    console.log("Play");
+                    $('btnPlay').html("Pause");
+                    $('btnPlay').toggleClass("active");
+                } 
+                else 
+                {
+
+                    ctrlVideo.pause();
+                    console.log("pause");
+
+                    $('btnPlay').html("play");
+                    $('btnPlay').toggleClass("active");
+                }
+            });
+
+        });
+
+    </script> *@
+
+    <script>
+
+        var ctrlVideo = document.getElementById("banner-video");
+        const playPauseButton = document.getElementById('btnPlay');
+        let isPlaying = false;
+
+        playPauseButton.addEventListener('click', () => {
+            if (isPlaying) {
+                ctrlVideo.pause();
+                playPauseButton.textContent = 'Pause';
+                playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+
+
+            } else {
+                playPauseButton.textContent = 'Play';
+                playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+
+
+                ctrlVideo.play();
+            }
+            isPlaying = !isPlaying;
+        });
+
+    </script>
+
+
+
+</body>
+</html>

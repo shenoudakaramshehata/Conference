@@ -1,0 +1,41 @@
+﻿@page
+@model Conference.Pages.RegisterModel
+@{
+}
+
+<div style="background-color: #0098bd;text-align:center;color:white;padding-bottom:10px;">
+    مشاركة الخريجين
+</div>
+<div id="banner-area" class="banner-area" style="background-image:url(Theme/images/banner/banner1.jpg)">
+</div>
+<div style="background-color: #0098bd;text-align:center;color:white;padding-bottom:10px;    padding-top: 10px;">
+    شنو بودكم تشاركون
+
+</div>
+
+<form style="padding:25px!important" method="post">
+    <input hidden name="TypeId" value="@Model.TypeId" />
+    <input hidden name="StrOptions" value="@Model.StrOptions" />
+    <input hidden name="EvId" value="@Model.EvId" />
+    <div class="col-md-12 text-center text-md-center" style="    border-radius: 25px;background-color: #0099bb;color: white;    padding: 25px;">
+        <div class="call-to-action-btn">
+            <div class="container mt-4">
+                <div style="text-align:right">
+                    <label for="exampleFormControlInput1" class="form-label">الاسم</label>
+                    <input type="text" class="form-control" name="userName" id="exampleFormControlInput1" style="background-color: white;" required>
+                </div>
+                <div style="text-align:right;    margin-top: 20px;">
+                    <label for="exampleFormControlInput1" class="form-label">رقم الهاتف</label>
+                    <input type="text" class="form-control" name="userPhone" id="exampleFormControlInput1" style="background-color: white;" required>
+                </div>
+            </div>
+            <div class="col-md-12 text-center text-md-center mt-3 mt-md-0">
+                <div class="call-to-action-btn" style="height: 30px;}">
+
+                    <button class="btn btn-dark" type="submit" style="background-color:#07bbe1" value="Submit">مشاركة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,181 @@
+﻿@using Conference.Data
+@inject ConferenceContext _context
+@model Conference.Models.EventActivity_Single
+@{
+}
+
+
+<div class="modal fade" id="showEditModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true" role="dialog">
+    <!--begin::Modal dialog-->
+    <div b-cpu6lo70wp="" class="modal-dialog modal-dialog-centered mw-900px">
+        <!--begin::Modal content-->
+        <div b-cpu6lo70wp="" class="modal-content">
+            <!--begin::Modal header-->
+            <div b-cpu6lo70wp="" class="modal-header">
+                <!--begin::Modal title-->
+				<h2 b-cpu6lo70wp="">تعديل نشاط الفعالية</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div b-cpu6lo70wp="" class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i b-cpu6lo70wp="" class="ki-duotone ki-cross fs-1">
+                        <span b-cpu6lo70wp="" class="path1"></span>
+                        <span b-cpu6lo70wp="" class="path2"></span>
+                    </i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div b-cpu6lo70wp="" class="modal-body py-lg-10 px-lg-10">
+                <!--begin::Stepper-->
+                <div b-cpu6lo70wp="" class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_modal_create_app_stepper" data-kt-stepper="true">
+
+                    <!--begin::Content-->
+                    <div b-cpu6lo70wp="" class="flex-row-fluid py-lg-5 px-lg-15">
+						<!--begin::Form-->
+						<form class="form fv-plugins-bootstrap5 fv-plugins-framework" asp-area="Admin" asp-page="/EventSingleActivites/Index" asp-page-handler="EditEventActivity" enctype="multipart/form-data">
+							<!--begin::Step 1-->
+							<input asp-for="@Model.EventActivityId" id="HiddenId" hidden>
+							<input asp-for="@Model.EventId" id="EventHiddenId" hidden>
+							<div b-cpu6lo70wp="" class="current" data-kt-stepper-element="content">
+								<div b-cpu6lo70wp="" class="w-100">
+
+									<!--begin::Input group-->
+									<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="@Model.EventActivityTitle" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">اسم  نشاط الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="إدخل اسم  نشاط الفعالية" data-bs-original-title="إدخل اسم  نشاط الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										<input id="DEventActivityTitleId" b-cpu6lo70wp="" data-val-required="@Model.EventActivityTitle" type="text" required asp-for="@Model.EventActivityTitle" class="form-control form-control-lg form-control-solid" placeholder="اسم  نشاط الفعالية">
+										<!--end::Input-->
+										<div class="fv-plugins-message-container invalid-feedback">
+											<span asp-validation-for="@Model.EventActivityTitle" class="text-danger"></span>
+										</div>
+									</div>
+							
+									<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="@Model.EventActivityDescription" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">وصف نشاط  الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="وصف نشاط  الفعالية" data-bs-original-title="إدخل وصف نشاط  الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										@*<input b-cpu6lo70wp="" data-val-required="@Model.EventActivityDescription" type="text" required asp-for="@Model.EventActivityDescription" class="form-control form-control-lg form-control-solid" placeholder="وصف نشاط  الفعالية">*@
+										<textarea id="DEventActivityDescriptionId" b-cpu6lo70wp="" data-val-required="@Model.EventActivityDescription" type="text" required asp-for="@Model.EventActivityDescription" class="form-control form-control-lg form-control-solid" cols="4" placeholder="وصف نشاط  الفعالية"></textarea>
+										<!--end::Input-->
+										<div class="fv-plugins-message-container invalid-feedback">
+											<span asp-validation-for="@Model.EventActivityDescription" class="text-danger"></span>
+										</div>
+									</div>
+								@*	<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="TemplateCategory" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">اختر الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="اختر الفعالية" data-bs-original-title="اختر الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										<!--begin::Action wrapper-->
+
+										<select id="DEventIdId" asp-for="@Model.EventId" class="form-control form-control-lg form-control-solid m-bootstrap-select m-bootstrap-select--air m-bootstrap-select--pill m_selectpicker" title="Air &amp; pill style" tabindex="-98">
+											<option class="bs-title-option" value="">اختر الفعالية</option>
+											@{
+												var evens = _context.Events.Select(e => new { e.EventId, e.EventTitle });
+
+												if (evens != null)
+												{
+													foreach (var item in evens)
+													{
+
+														<option value="@item.EventId">@item.EventTitle</option>
+
+													}
+												}
+											}
+										</select>
+									</div>*@
+									<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="TemplateCategory" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">نوع نشاط الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="نوع نشاط الفعالية" data-bs-original-title="نوع نشاط الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										<!--begin::Action wrapper-->
+										<select id="DEventActivityTypeId" asp-for="@Model.EventActivityType" class="form-control form-control-lg form-control-solid m-bootstrap-select m-bootstrap-select--air m-bootstrap-select--pill m_selectpicker" title="Air &amp; pill style" tabindex="-98">
+											<option class="bs-title-option" value="">اختر نوع نشاط الفعالية</option>
+											<option value="1">خريج</option>
+											<option value="2">الجمهور</option>
+										</select>
+									</div>
+
+
+
+									<div class="d-flex flex-stack pt-10 m-0">
+										<button type="button" class="btn btn-lg btn-light-primary me-3" data-bs-dismiss="modal">
+											<i b-cpu6lo70wp="" class="ki-duotone ki-arrow-left fs-3 me-1">
+												<span b-cpu6lo70wp="" class="path1"></span>
+												<span b-cpu6lo70wp="" class="path2"></span>
+											</i>إغلاق
+										</button>
+										<button type="submit" class="btn btn-lg btn-primary" id="add-btn">
+											<span b-cpu6lo70wp="" class="indicator-label">
+												تعديل نشاط فعالية
+												<i b-cpu6lo70wp="" class="ki-duotone ki-arrow-right fs-3 ms-2 me-0">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+												</i>
+											</span>
+											<span b-cpu6lo70wp="" class="indicator-progress">
+												انتظر من فضلك
+												<span b-cpu6lo70wp="" class="spinner-border spinner-border-sm align-middle ms-2"></span>
+											</span>
+										</button>
+									</div>
+									<!--end::Input group-->
+								</div>
+							</div>
+							<!--end::Step 1-->
+
+						</form>
+						<!--end::Form-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--end::Stepper-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>

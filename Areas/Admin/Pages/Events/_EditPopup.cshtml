@@ -1,0 +1,381 @@
+﻿@using Conference.Data
+@inject ConferenceContext _context
+@model Conference.Models.Event
+@{
+}
+
+
+<div class="modal fade" id="showEditModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true" role="dialog">
+    <!--begin::Modal dialog-->
+    <div b-cpu6lo70wp="" class="modal-dialog modal-dialog-centered mw-900px">
+        <!--begin::Modal content-->
+        <div b-cpu6lo70wp="" class="modal-content">
+            <!--begin::Modal header-->
+            <div b-cpu6lo70wp="" class="modal-header">
+                <!--begin::Modal title-->
+				<h2 b-cpu6lo70wp="">تعديل الفعالية</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div b-cpu6lo70wp="" class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i b-cpu6lo70wp="" class="ki-duotone ki-cross fs-1">
+                        <span b-cpu6lo70wp="" class="path1"></span>
+                        <span b-cpu6lo70wp="" class="path2"></span>
+                    </i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div b-cpu6lo70wp="" class="modal-body py-lg-10 px-lg-10">
+                <!--begin::Stepper-->
+                <div b-cpu6lo70wp="" class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_modal_create_app_stepper" data-kt-stepper="true">
+
+                    <!--begin::Content-->
+                    <div b-cpu6lo70wp="" class="flex-row-fluid py-lg-5 px-lg-15">
+						<!--begin::Form-->
+						<form class="form fv-plugins-bootstrap5 fv-plugins-framework" asp-area="Admin" asp-page="/Events/Index" asp-page-handler="EditEvent" enctype="multipart/form-data">
+							
+							<input asp-for="@Model.EventId" id="HiddenId" hidden>
+							<input asp-for="@Model.EventVideo" id="DEventVideoId" hidden>
+							<input asp-for="@Model.EventBarcode" id="DEventBarcodeId" hidden>
+							<input asp-for="@Model.QRCodeImage" id="DQRCodeImageId" hidden>
+							<input asp-for="@Model.QRCodeName" id="DQRCodeNameId" hidden>
+							<input asp-for="@Model.IndividualImage" id="AssIndividualImageId" hidden>
+							<input asp-for="@Model.AudianceImage" id="AssAudianceImageId" hidden>
+							<input asp-for="@Model.QueueImage" id="AssQueueImageId" hidden>
+						
+							<!--begin::Step 1-->
+							<div b-cpu6lo70wp="" class="current" data-kt-stepper-element="content">
+								<div b-cpu6lo70wp="" class="w-100">
+
+									<!--begin::Input group-->
+									<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="@Model.EventTitle" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">اسم الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="اسم الفعالية" data-bs-original-title="إدخل اسم الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										<input b-cpu6lo70wp="" id="DEventTitleId" data-val-required="@Model.EventTitle" type="text" required asp-for="@Model.EventTitle" class="form-control form-control-lg form-control-solid" placeholder="إدخل اسم الفعالية">
+										<!--end::Input-->
+										<div class="fv-plugins-message-container invalid-feedback">
+											<span asp-validation-for="@Model.EventTitle" class="text-danger"></span>
+										</div>
+									</div>
+									<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="@Model.EventLocation" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">موقع الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="موقع الفعالية" data-bs-original-title="موقع الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										<input b-cpu6lo70wp="" id="DEventLocationId" data-val-required="@Model.EventLocation" type="text" required asp-for="@Model.EventLocation" class="form-control form-control-lg form-control-solid" placeholder="موقع الفعالية">
+										<!--end::Input-->
+										<div class="fv-plugins-message-container invalid-feedback">
+											<span asp-validation-for="@Model.EventLocation" class="text-danger"></span>
+										</div>
+									</div>
+
+									<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="profileImage" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">تاريخ الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="تاريخ الفعالية" data-bs-original-title="تاريخ الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<div class="form-group row">
+											<div class="col-lg-12 col-md-12 col-sm-12">
+												<div class="mb-0">
+													<input id="DEventDateId" class="form-control form-control-solid" placeholder="Pick date & time" id="kt_datepicker_3" asp-for="@Model.EventDate" value="@Model.EventDate" />
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+									<!--end::Input group-->
+									<div class="row">
+										<div b-cpu6lo70wp="" class="col-8 fv-row mb-10 fv-plugins-icon-container">
+											<!--begin::Label-->
+											<label b-cpu6lo70wp="" for="profileImage" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+												<span b-cpu6lo70wp="" class="required">تعديل فيديو الفعالية</span>
+												<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="تعديل فيديو الفعالية" data-bs-original-title="تعديل فيديو الفعالية" data-kt-initialized="1">
+													<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+														<span b-cpu6lo70wp="" class="path1"></span>
+														<span b-cpu6lo70wp="" class="path2"></span>
+														<span b-cpu6lo70wp="" class="path3"></span>
+													</i>
+												</span>
+											</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<div class="col-lg-12 fv-row fv-plugins-icon-container">
+												<div class="uppy" id="kt_uppy_5">
+													<div class="uppy-wrapper">
+														<div class="uppy-Root uppy-FileInput-container">
+															<input type="file" name="Editfile" class="form-control form-control-lg form-control-solid" id="profileImage">
+														</div>
+														<div class="uppy-status">
+															<div class="uppy-Root uppy-StatusBar is-waiting" aria-hidden="true" dir="ltr">
+																<div class="uppy-StatusBar-progress
+                           " role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div><div class="uppy-StatusBar-actions"></div>
+															</div>
+														</div>
+														<div class="uppy-informer uppy-informer-min">
+															<div class="uppy uppy-Informer" aria-hidden="true"><p role="alert"> </p></div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Input-->
+
+										</div>
+										<div class="col-md-4 form-group pt-3">
+											<iframe id="AssignEventVideoId" src="frontsite/img/video.mp4" width="200" sandbox frameborder="0"> </iframe>
+
+
+										</div>
+										</div>
+									
+									@*<div b-cpu6lo70wp="" class="fv-row mb-10 fv-plugins-icon-container">
+										<!--begin::Label-->
+										<label b-cpu6lo70wp="" for="profileImage" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+											<span b-cpu6lo70wp="" class="required">تعديل فيديو الفعالية</span>
+											<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="تعديل فيديو الفعالية" data-bs-original-title="تعديل فيديو الفعالية" data-kt-initialized="1">
+												<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+													<span b-cpu6lo70wp="" class="path3"></span>
+												</i>
+											</span>
+										</label>
+										<!--end::Label-->
+										<!--begin::Input-->
+										<div class="col-lg-12 fv-row fv-plugins-icon-container">
+											<div class="uppy" id="kt_uppy_5">
+												<div class="uppy-wrapper">
+													<div class="uppy-Root uppy-FileInput-container">
+														<input type="file" name="Editfile" class="form-control form-control-lg form-control-solid" id="profileImage">
+													</div>
+													<div class="uppy-status">
+														<div class="uppy-Root uppy-StatusBar is-waiting" aria-hidden="true" dir="ltr">
+															<div class="uppy-StatusBar-progress
+                           " role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div><div class="uppy-StatusBar-actions"></div>
+														</div>
+													</div>
+													<div class="uppy-informer uppy-informer-min">
+														<div class="uppy uppy-Informer" aria-hidden="true"><p role="alert"> </p></div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--end::Input-->
+
+									</div>*@
+									<div class="row">
+										<div b-cpu6lo70wp="" class="col-8 fv-row mb-10 fv-plugins-icon-container">
+											<!--begin::Label-->
+											<label b-cpu6lo70wp="" for="profileImage" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+												<span b-cpu6lo70wp="" class="required">تعديل صورة صفحة الاشتراك كخريج</span>
+												<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="تعديل صورة صفحة الاشتراك كخريج" data-bs-original-title="تعديل صورة صفحة الاشتراك كخريج" data-kt-initialized="1">
+													<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+														<span b-cpu6lo70wp="" class="path1"></span>
+														<span b-cpu6lo70wp="" class="path2"></span>
+														<span b-cpu6lo70wp="" class="path3"></span>
+													</i>
+												</span>
+											</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<div class="col-lg-12 fv-row fv-plugins-icon-container">
+												<div class="uppy" id="kt_uppy_5">
+													<div class="uppy-wrapper">
+														<div class="uppy-Root uppy-FileInput-container">
+															<input type="file" name="EditIndfile" class="form-control form-control-lg form-control-solid" id="profileImage">
+														</div>
+														<div class="uppy-status">
+															<div class="uppy-Root uppy-StatusBar is-waiting" aria-hidden="true" dir="ltr">
+																<div class="uppy-StatusBar-progress
+                           " role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div><div class="uppy-StatusBar-actions"></div>
+															</div>
+														</div>
+														<div class="uppy-informer uppy-informer-min">
+															<div class="uppy uppy-Informer" aria-hidden="true"><p role="alert"> </p></div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Input-->
+
+										</div>
+										<div class="col-md-4 form-group pt-3">
+											<img id="DIndividualImageId" src="frontsite/img/img.png" width="200" height="120" />
+
+										</div>
+								</div>
+									<div class="row">
+										<div b-cpu6lo70wp="" class="col-8 fv-row mb-10 fv-plugins-icon-container">
+											<!--begin::Label-->
+											<label b-cpu6lo70wp="" for="profileImage" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+												<span b-cpu6lo70wp="" class="required">تعديل صورة صفحة الاشتراك كجمهور</span>
+												<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="تعديل صورة صفحة الاشتراك كجمهور" data-bs-original-title="تعديل صورة صفحة الاشتراك كجمهور" data-kt-initialized="1">
+													<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+														<span b-cpu6lo70wp="" class="path1"></span>
+														<span b-cpu6lo70wp="" class="path2"></span>
+														<span b-cpu6lo70wp="" class="path3"></span>
+													</i>
+												</span>
+											</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<div class="col-lg-12 fv-row fv-plugins-icon-container">
+												<div class="uppy" id="kt_uppy_5">
+													<div class="uppy-wrapper">
+														<div class="uppy-Root uppy-FileInput-container">
+															<input type="file" name="EditAudfile" class="form-control form-control-lg form-control-solid" id="profileImage">
+														</div>
+														<div class="uppy-status">
+															<div class="uppy-Root uppy-StatusBar is-waiting" aria-hidden="true" dir="ltr">
+																<div class="uppy-StatusBar-progress
+                           " role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div><div class="uppy-StatusBar-actions"></div>
+															</div>
+														</div>
+														<div class="uppy-informer uppy-informer-min">
+															<div class="uppy uppy-Informer" aria-hidden="true"><p role="alert"> </p></div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Input-->
+
+										</div>
+										<div class="col-md-4 form-group pt-3">
+											<img id="DAudianceImageId" src="frontsite/img/img.png" width="200" height="120" />
+
+
+										</div>
+									</div>
+									
+									<div class="row">
+										<div b-cpu6lo70wp="" class="col-8 fv-row mb-10 fv-plugins-icon-container">
+											<!--begin::Label-->
+											<label b-cpu6lo70wp="" for="profileImage" class="d-flex align-items-center fs-5 fw-semibold mb-2">
+												<span b-cpu6lo70wp="" class="required">تعديل صورة صفحة الانتظار</span>
+												<span b-cpu6lo70wp="" class="ms-1" data-bs-toggle="tooltip" aria-label="تعديل صورة صفحة الانتظار" data-bs-original-title="تعديل صورة صفحة الانتظار" data-kt-initialized="1">
+													<i b-cpu6lo70wp="" class="ki-duotone ki-information-5 text-gray-500 fs-6">
+														<span b-cpu6lo70wp="" class="path1"></span>
+														<span b-cpu6lo70wp="" class="path2"></span>
+														<span b-cpu6lo70wp="" class="path3"></span>
+													</i>
+												</span>
+											</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<div class="col-lg-12 fv-row fv-plugins-icon-container">
+												<div class="uppy" id="kt_uppy_5">
+													<div class="uppy-wrapper">
+														<div class="uppy-Root uppy-FileInput-container">
+															<input type="file" name="EditQuefile" class="form-control form-control-lg form-control-solid" id="profileImage">
+														</div>
+														<div class="uppy-status">
+															<div class="uppy-Root uppy-StatusBar is-waiting" aria-hidden="true" dir="ltr">
+																<div class="uppy-StatusBar-progress
+                           " role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div><div class="uppy-StatusBar-actions"></div>
+															</div>
+														</div>
+														<div class="uppy-informer uppy-informer-min">
+															<div class="uppy uppy-Informer" aria-hidden="true"><p role="alert"> </p></div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Input-->
+
+										</div>
+										<div class="col-md-4 form-group pt-3">
+											<img id="DQueueImageId" src="frontsite/img/img.png" width="200" height="120" />
+
+
+										</div>
+										</div>
+									
+									
+									
+									<div class="row col-12">
+										<div class="form-group col-6">
+											<div class="form-check">
+												<input asp-for="@Model.EventIsActive" id="DEventIsActiveId" class="form-check-input" type="checkbox">
+												<label for="@Model.EventIsActive" class="form-check-label  d-flex align-items-center fs-5 fw-semibold mb-2">نشط</label>
+												<span asp-validation-for="@Model.EventIsActive" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+									
+
+
+
+
+									<div class="d-flex flex-stack pt-10 m-0">
+										<button type="button" class="btn btn-lg btn-light-primary me-3" data-bs-dismiss="modal">
+											<i b-cpu6lo70wp="" class="ki-duotone ki-arrow-left fs-3 me-1">
+												<span b-cpu6lo70wp="" class="path1"></span>
+												<span b-cpu6lo70wp="" class="path2"></span>
+											</i>إغلاق
+										</button>
+										<button type="submit" class="btn btn-lg btn-primary" id="add-btn">
+											<span b-cpu6lo70wp="" class="indicator-label">
+												تعديل الفعالية
+												<i b-cpu6lo70wp="" class="ki-duotone ki-arrow-right fs-3 ms-2 me-0">
+													<span b-cpu6lo70wp="" class="path1"></span>
+													<span b-cpu6lo70wp="" class="path2"></span>
+												</i>
+											</span>
+											<span b-cpu6lo70wp="" class="indicator-progress">
+												انتظر من فضلك
+												<span b-cpu6lo70wp="" class="spinner-border spinner-border-sm align-middle ms-2"></span>
+											</span>
+										</button>
+									</div>
+									<!--end::Input group-->
+								</div>
+							</div>
+							<!--end::Step 1-->
+
+						</form>
+						<!--end::Form-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--end::Stepper-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>

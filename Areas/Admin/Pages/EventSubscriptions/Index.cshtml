@@ -1,0 +1,165 @@
+﻿@page
+@model Conference.Areas.Admin.Pages.EventSubscriptions.IndexModel
+
+
+@Html.AntiForgeryToken()
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@{
+}
+
+@{
+    ViewBag.Title = "إشتراكات الفعاليات";
+    ViewBag.pTitle = "إشتراكات الفعاليات";
+    ViewBag.pageTitle = "إشتراكات الفعاليات";
+}
+
+@*<partial name="_DatchDelete" model="@Model.eventRecord" view-data="ViewData" />
+*@
+<div class="d-flex flex-column flex-column-fluid">
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar  py-3 py-lg-6 ">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex flex-stack ">
+            <!--begin::Page title-->
+            <div data-kt-swapper="true" data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_toolbar_container'}" class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0">
+                <!--begin::Title-->
+                <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                    إشتراكات الفعاليات
+                </h1>
+                <!--end::Title-->
+            </div>
+            <!--end::Page title-->
+            <!--begin::Action group-->
+           @* <div class="d-flex align-items-center gap-2">
+                <div class="d-flex align-items-center gap-2 gap-lg-3">
+                    <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" id="create-btn" data-bs-target="#AddModal">
+                        <i class="ki-duotone ki-plus fs-2"></i> أضافة فعالية
+                    </button>
+                    <!--end::Primary button-->
+                </div>
+            </div>*@
+            <!--end::Action group-->
+        </div>
+        <!--end::Toolbar container-->
+    </div>
+    <div id="kt_app_content" class="app-content  flex-column-fluid ">
+
+
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container  container-fluid ">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <table id="tblList" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                        <thead>
+                            <tr class="fw-bold fs-6 text-gray-800 px-7">
+                                <th hidden>id</th>
+                                <th class="min-w-125px">@sharedResource["Name"]</th>
+                                <th class="min-w-200px">@sharedResource["Mobile"]</th>
+                                <th class="min-w-125px">@sharedResource["Subscription Type"]</th>
+                                <th class="min-w-125px">@sharedResource["Subscription Date"]</th>
+                                <th class="min-w-125px">@sharedResource["Subscription Queue"]</th>
+                                <th class="min-w-125px text-end">@sharedResource["Actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@*<partial name="_EditPopup" model="@Model.eventRecord" view-data="ViewData" />
+<partial name="_AddPopup" model="@Model.eventRecord" view-data="ViewData" />
+<partial name="_ViewPopup" model="@Model.eventRecord" view-data="ViewData" />*@
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#tblList").DataTable({
+            "proccessing": true,
+            "serverSide": true,
+            "ajax": {
+
+                url: "/admin/EventSubscriptions/Index",
+                type: 'POST',
+                headers: { 'XSRF-TOKEN': $('@Html.AntiForgeryToken()').val() }
+            },
+            "columnDefs": [
+                {
+                    "targets": -1,
+                    "data": null,
+                    "render": function (data, type, row, meta) {
+                        const linkHtml = `
+
+
+                                                                                              <a href="/Admin/EventSubActivites/index?id=${row.EventSubscriptionId}" class="btn btn-sm fw-bold btn-danger" >
+            الانشطة المشترك بها 
+                                                                               </a>
+                                                                                 
+
+                                                                                `;
+                        return linkHtml;
+                    },
+                    "sortable": false
+                },
+                { "name": "EventSubscriptionId", "data": "EventSubscriptionId", "targets": 0, "visible": false },
+                { "name": "EventSubscriptionFullName", "data": "EventSubscriptionFullName", "targets": 1 },
+                { "name": "EventSubscriptionMobile", "data": "EventSubscriptionMobile", "targets": 2, "visible": true },
+                { "name": "EventSubscriptionType", "data": "EventSubscriptionType", "targets": 3, "visible": true },
+                {
+                    "name": "EventSubscriptionDate", "data": "EventSubscriptionDate", "targets": 4, "render": function (data, type, row, meta) {
+                        // Assuming data is in ISO date format, e.g., "yyyy-mm-dd"
+                        // Convert it to a JavaScript Date object
+                        var dateObj = new Date(data);
+
+                        // Format the date as "d/mm/yyyy"
+                        var day = dateObj.getDate();
+                        var month = dateObj.getMonth() + 1; // Adding 1 because months are zero-based
+                        var year = dateObj.getFullYear();
+
+                        // Pad single digits with a leading zero if needed
+                        var formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+
+                        return formattedDate;
+                    }
+                },
+                { "name": "EventSubscriptionQueue", "data": "EventSubscriptionQueue", "targets": 5 }
+            
+
+
+            ],
+            "order": [[1, "desc"]],
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom":
+                "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+
+                "<'table-responsive'tr>" +
+
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">",
+            "createdRow": function (row, data, dataIndex) {
+                var tdElements = $(row).find('td');
+                $(tdElements[tdElements.length - 1]).addClass('text-end');
+            }
+        });
+    });
+
+    
+</script>

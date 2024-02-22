@@ -1,0 +1,113 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+
+    .video {
+        position: relative;
+        width: 100%;
+        border-bottom: solid 10px #0098bd;
+        display: flex;
+    }
+
+        .video img {
+            display: block;
+        }
+
+        .video .buttons {
+            position: absolute;
+            bottom: 50%;
+            z-index: 1;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+
+        .video:hover .buttons {
+            display: block;
+            color: white;
+        }
+
+    .btnPlayer.active {
+        background-color: darkblue;
+    }
+
+    #banner-video {
+        width: 100%
+    }
+    @@media (max-width: 768px) {
+        #banner-video{
+            width: 100%
+        }
+    }
+
+</style>
+
+
+<div class="video">
+    <video id="banner-video" preload="auto" loop >
+        <source src="~/@Model.eventVideo">
+    </video>
+    <div class="buttons">
+        <button type="button" id="btnPlay" class="btn btn-primary"><i class="fas fa-play"></i></button>
+    </div>
+</div>
+
+
+
+<section class="call-to-action-box no-padding">
+    <div class="container" style="margin-bottom: 100px;">
+        <form  class="action-style-box" style=" padding-bottom: 30px !important;border-radius: 25px;width:100% !important" method="post">
+            <input hidden name="EventId" value="@Model.record.EventId" />
+            <div class="row align-items-center">
+                <div class="col-md-12 text-center text-md-center">
+                    <div class="call-to-action-text" style="color:white; background-color: #0099bb;border-top-left-radius: 25px;border-top-right-radius: 25px;height:80px !important;">
+                        <h3 class="action-title">
+                            شارك معنا في فعاليات الحفلة
+                           
+                        </h3>
+                        <p>شارك معنا فى<span>&nbsp;@Model.eventTitle</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center text-md-center mt-3 mt-md-0">
+                <div class="call-to-action-btn" style="    background-color: #e5e5e5;height: 30px;}">
+                    هل انت خريج او من الجمهور ؟
+                </div>
+            </div>
+            <div class="col-md-12 text-center text-md-center mt-3 mt-md-0">
+                <div class="call-to-action-btn" style="background-color: #e5e5e5;height: 50px;}">
+                    <div class="container mt-4">
+                        <div class="form-check form-check-inline">
+                            <input asp-for="SelectedOption" class="form-check-input" type="radio" name="radioGroup" id="radioOption1" value="option1" checked>
+                            <label class="form-check-label" for="radioOption1">
+                                خـريـج
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline" >
+                            <input asp-for="SelectedOption" class="form-check-input" type="radio" name="radioGroup" id="radioOption2" value="option2">
+                            <label class="form-check-label" for="radioOption2">
+                                من جمهور
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center text-md-center mt-3 mt-md-0">
+                <div class="call-to-action-btn" style="background-color: #e5e5e5;height: 30px;}">
+                   
+                    <button class="btn btn-dark" type="submit" value="Submit" >دخـول</button>
+                  @*  asp-page-handler="Submit"*@
+                </div>
+            </div>
+        </form><!-- Action style box -->
+    </div><!-- Container end -->
+</section><!-- Action end -->
+<!--/ News end -->
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        localStorage.setItem("InsertCount", 0);
+    });
+</script>

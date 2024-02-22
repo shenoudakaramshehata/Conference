@@ -1,0 +1,128 @@
+﻿@{
+}
+
+
+@model Conference.Models.Event
+
+<div class="modal fade" id="QuickViewPoup" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true" role="dialog">
+    <!--begin::Modal dialog-->
+    <div b-cpu6lo70wp="" class="modal-dialog modal-dialog-centered mw-900px">
+        <!--begin::Modal content-->
+        <div b-cpu6lo70wp="" class="modal-content">
+            <!--begin::Modal header-->
+            <div b-cpu6lo70wp="" class="modal-header">
+                <!--begin::Modal title-->
+                <h2 b-cpu6lo70wp="">تفاصيل الفعالية</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div b-cpu6lo70wp="" class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i b-cpu6lo70wp="" class="ki-duotone ki-cross fs-1">
+                        <span b-cpu6lo70wp="" class="path1"></span>
+                        <span b-cpu6lo70wp="" class="path2"></span>
+                    </i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div b-cpu6lo70wp="" class="modal-body py-lg-10 px-lg-10">
+                <!--begin::Stepper-->
+                <div b-cpu6lo70wp="" class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_modal_create_app_stepper" data-kt-stepper="true">
+
+                    <!--begin::Content-->
+                    <div b-cpu6lo70wp="" class="flex-row-fluid py-lg-5 px-lg-15">
+                        <!--begin::Form-->
+                        <div class="table-card">
+                            <table class="table mb-0">
+                                <tbody>
+                                    <tr>
+                                        <div class="d-flex flex-wrap flex-sm-nowrap" style="justify-content: center;">
+                                            <!--begin: Pic-->
+                                            <div class="me-7 mb-4">
+                                                <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
+
+
+                                                    <img src="/Images/Template/p1.jpg" id="PicId" alt="image">
+
+                                                </div>
+                                            </div>
+                                            <!--end::Pic-->
+                                        </div>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td class="fw-medium">اسم الفعالية</td>
+                                        <td id="EventTitleId"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">باركود الفعالية</td>
+                                        <td id="EventBarcodeId"></td>
+                                    </tr>
+
+                                    
+                                    <tr>
+                                        <td class="fw-medium">موقع الفعالية</td>
+                                        <td id="EventLocationId"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">تاريخ الفعالية</td>
+                                        <td id="EventDateId"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">فيديو الفعالية</td>
+                                        <td>
+                                            <iframe id="EventVideoId" src="frontsite/img/video.mp4" width="300" sandbox  frameborder="0"> </iframe>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">صورة صفحة الاشتراك كخريج</td>
+                                        <td>
+                                            <img id="IndividualImageId" src="frontsite/img/img.png" width="200" height="120" />
+                                           
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">صورة صفحة الاشتراك كجمهور</td>
+                                        <td>
+                                            <img id="AudianceImageId" src="frontsite/img/img.png" width="200" height="120" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">صورة صفحة الانتظار</td>
+                                        <td>
+                                            <img id="QueueImageId" src="frontsite/img/img.png" width="200" height="120" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium">نشط</td>
+
+                                        <td id="DIsActiveId"></td>
+
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table><!--end table-->
+                        </div>
+                    </div>
+                </div><!--end card-->
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-lg btn-light-primary me-3" data-bs-dismiss="modal">
+                            <i b-cpu6lo70wp="" class="ki-duotone ki-arrow-left fs-3 me-1">
+                                <span b-cpu6lo70wp="" class="path1"></span>
+                                <span b-cpu6lo70wp="" class="path2"></span>
+                            </i>@sharedResource["Close"]
+                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

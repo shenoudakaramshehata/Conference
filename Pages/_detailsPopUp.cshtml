@@ -1,0 +1,65 @@
+﻿@*@{
+    var Whatsapp = _context.SocialMediaLinks.FirstOrDefault().WhatSapp;
+}*@
+
+@*@using Microsoft.AspNetCore.Identity
+@using CRM.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject PerfumeContext _context
+
+<link href="~/style.css" rel="stylesheet" />
+<style>
+    .card--sm {
+        right: 120px !important;
+        left: 120px !important;
+      
+    }
+   
+    .button-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .caption-wrapper {
+        display: flex;
+        align-items: center;
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+
+    [type="radio"]:checked ~ .label_country {
+       
+         background-color: none!important; 
+      
+    }
+
+    .caption {
+        font-size: 12px;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 2rem;
+        margin-top: 0.5rem;
+    }
+
+</style>*@
+
+<div class="modal fade" id="ِDetailspopupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="width:max-content !important;">
+            <div class="modal-body">
+              
+                <!--End offcanvas-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--End offcanvas-->
+@*<div class="modal-backdrop fade show" id="modalBackdrop"></div>*@
+
+
+

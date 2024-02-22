@@ -1,0 +1,46 @@
+﻿@page
+@model Conference.Pages.ThankYouModel
+@{
+}
+
+
+<div style="background-color: #0098bd;text-align:center;color:white;padding-bottom:10px;">
+    مشاركة الخريجين
+</div>
+@{
+    if (Model.EventImg != null)
+    {
+        <div id="banner-area" class="banner-area" style="background-image:url(/@Model.EventImg)">
+        </div>
+    }
+    else
+    {
+        <div id="banner-area" class="banner-area" style="background-image:url(Theme/images/banner/banner1.jpg)">
+        </div>
+    }
+}
+<div style="background-color: #0098bd;text-align:center;color:white;padding-bottom:10px;    padding-top: 10px;">
+    تم تسجيل طلبك بنجاح
+    شكرا لمشاركتكم
+
+</div>
+
+<div class="row text-center p-5 mb-4">
+    <div class="col-12">
+        دورك رقم
+    </div>
+    <div class="col-12" style="padding: inherit;text-align: -webkit-center;">
+        <h1 style="    width: fit-content;font-size:150px; color:#0099bb;   padding: inherit;border:solid 1px #0099bb">@Model.InQe</h1>
+    </div>
+    <div class="col-12 mb-4">
+        يرجي التواصل مع فريق التنظيم
+        الموجود داخل القاعة
+    </div>
+
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        localStorage.setItem("InsertCount", 1);
+    });
+</script>
+    

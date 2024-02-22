@@ -1,0 +1,215 @@
+﻿@page
+@model Conference.Pages.IndividualModel
+@{
+    ViewData["Title"] = "Individual Activities";
+
+}
+
+
+<style>
+    .form-check-label {
+        display: inline-block !important;
+        vertical-align: middle !important;
+        margin-bottom: 0 !important; /* Remove any default margin */
+    }
+
+        .form-check-label + button {
+            margin-left: 10px !important; /* Adjust as needed */
+        }
+</style>
+<div style="background-color: #0098bd;text-align:center;color:white;padding-bottom:10px;">
+    مشاركة خريج
+</div>
+
+
+@{
+    if (@Model.EventObj.IndividualImage != null)
+    {
+        <div id="banner-area" class="banner-area" style="background-image:url(/@Model.EventObj.IndividualImage)">
+        </div>
+    }
+    else
+    {
+        <div id="banner-area" class="banner-area" style="background-image:url(Theme/images/banner/banner1.jpg)">
+        </div>
+    }
+}
+<div style="background-color: #0098bd;text-align:center;color:white;padding-bottom:10px;    padding-top: 10px;">
+    شنو بودكم تشاركون
+
+</div>
+
+<form class="action-style-box" style="margin-bottom: 130px !important; border-radius: 25px; width: 100% !important" method="post">
+    <div style="
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+">
+        <div class="text-right text-md-right mt-3 mt-md-0" style="
+">
+            <div class="call-to-action-btn" style="
+    display: flex;
+    justify-content: center;
+">
+                <div class="container mt-4" style="    text-align: right;padding-right: 30px;">
+
+                    @{
+                        if (Model.EventActivity_SingleList != null)
+                        {
+                            foreach (var ele in Model.EventActivity_SingleList)
+                            {
+                                <div class="form-check" style="
+                margin-bottom: 15px;
+                align-items: start;
+                justify-content: center;
+display:flex;
+            ">
+                                    <label style="text-align: right;width: 60% !important;">
+                                        <input class="form-check-input" type="checkbox" name="Options" id="radioOption1" value="@ele.EventActivityId">
+                                        @ele.EventActivityTitle
+                                    </label>
+                                    <button class="btn btn-dark" onclick="openModal(@ele.EventActivityId)" type="button" data-toggle="modal" style="padding: 4px; padding-right: 13px; padding-left: 13px; border-radius: 30px;">
+                                        تفاصيل
+                                    </button>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center text-md-center mt-3 mt-md-0">
+            <div class="call-to-action-btn" style="height: 30px;">
+                <button class="btn btn-dark" type="button" onclick="showRegister()" value="Submit">التالي</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div id="modelbodyid" class="modal-content" style="border-radius: 25px;"></div>
+        
+    </div>
+</div>
+
+<!--register popup-->
+<div class="modal fade" id="RegisterAddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div id="modelbodyid" class="modal-content" style="border-radius: 26px;">
+            <form asp-page="Individual" asp-page-handler="Register">
+
+                <input hidden="" id="StrOptionsID" name="StrOptions">
+                <div class="col-md-12 text-center text-md-center" style="    border-radius: 25px;background-color: #0099bb;color: white;    padding: 25px;">
+                    <div class="call-to-action-btn">
+                        <div class="container mt-4 mb-4">
+                            <div style="text-align:right">
+                                <label for="exampleFormControlInput1" class="form-label">الاسم</label>
+                                <input type="text" class="form-control" name="userName" id="exampleFormControlInput1" style="background-color: white;" required="">
+                            </div>
+                            <div style="text-align:right;    margin-top: 20px;">
+                                <label for="exampleFormControlInput1" class="form-label">رقم الهاتف</label>
+                                <input type="text" class="form-control" name="userPhone" id="exampleFormControlInput1" style="background-color: white;" maxlength="8"  required>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center text-md-center mt-3 mt-md-0">
+                            <div class="call-to-action-btn" style="height: 30px;}">
+
+                                <button class="btn btn-dark" type="submit" style="background-color:#07bbe1;margin-top: 5px;" value="Submit">مشاركة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input id="IndEventId" hidden value="@Model.EventObj.EventId" />
+                <input id="IndUrlId" hidden value="@Model.url" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/other/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/other/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function openModal(EventActivityId) {
+        console.log(EventActivityId)
+       
+        $.ajax({
+            type: "GET",
+            url: "/Individual?handler=ActivitesDetails",
+            data: { "EventActivityId": EventActivityId },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                var modelbody = document.getElementById("modelbodyid")
+                modelbody.innerHTML = ""
+                modelbody.innerHTML+= `
+                     <div>
+                    <div class="text-center text-md-center">
+                        <div class="call-to-action-text" style="background-color: #0099bb;border-top-left-radius: 25px;border-top-right-radius: 25px;height:52px !important;">
+                            <h3 class="action-title">
+                                   ${response.EventActivityTitle}
+                                </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-md-center mt-3 mt-md-0">
+                        <div class="call-to-action-btn" style="padding:10px;padding-bottom:30px;">
+                            ${response.EventActivityDescription}
+                    </div>
+                </div>
+                                        <div class="modal-footer" style="background-color: #0099bb;border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;">
+                    <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #07bbe1;color: white;">اغلاق</button>
+                    </div>
+                </div>
+
+                `
+                $('#AddModal').modal('show');
+            },
+            failure: function (response) {
+                alert(response);
+            }
+        });
+       
+    }
+
+
+
+    function showRegister() {
+        const checkboxes = document.querySelectorAll('input[name="Options"]:checked');
+        const values = Array.from(checkboxes).map(checkbox => checkbox.value);
+        var str = "";
+        if (values.length == 0) {
+            alert("من فضلك إختر علي الأقل نشاط")
+        }
+        else {
+            for (let i = 0; i < values.length; i++) {
+                if (i != 0) {
+                    str = str + ",";
+
+                }
+                str = str + values[i];
+
+
+            }
+            console.log(str)
+            console.log(values)
+            document.getElementById("StrOptionsID").value = str
+            console.log(document.getElementById("StrOptionsID").value)
+            $('#RegisterAddModal').modal('show');
+        }
+
+
+    }
+    window.addEventListener('DOMContentLoaded', (event) => {
+        console.log("Enter");
+        if (localStorage.getItem("InsertCount") == 1) {
+            var Url = document.getElementById("IndUrlId").value;
+            var EventId = document.getElementById("IndEventId").value;
+            window.location.href = Url + "/?id=" + EventId;
+        }
+    });
+</script>

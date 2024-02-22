@@ -1,0 +1,111 @@
+﻿@page
+@model Conference.Areas.Admin.Pages.SubscriptionActivity.IndexModel
+
+
+@{
+    ViewBag.Title = "انشطة المشترك بالفعالية ";
+    ViewBag.pTitle = "انشطة المشترك بالفعالية";
+    ViewBag.pageTitle = "انشطة المشترك بالفعالية";
+}
+
+@*<partial name="_DatchDelete" model="@Model.eventRecord" view-data="ViewData" />
+*@
+<div class="d-flex flex-column flex-column-fluid">
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar  py-3 py-lg-6 ">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex flex-stack ">
+            <!--begin::Page title-->
+            <div data-kt-swapper="true" data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_toolbar_container'}" class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0">
+                <!--begin::Title-->
+                <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                    انشطة المشترك بالفعالية
+                </h1>
+                <!--end::Title-->
+            </div>
+            <!--end::Page title-->
+          
+        </div>
+        <!--end::Toolbar container-->
+    </div>
+    <div id="kt_app_content" class="app-content  flex-column-fluid ">
+
+
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container  container-fluid ">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <table id="tblList" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                        <thead>
+                            <tr class="fw-bold fs-6 text-gray-800 px-7">
+                                <th hidden>id</th>
+                                <th class="min-w-125px">@sharedResource[" اسم النشاط المشترك به"]</th>
+                                <th class="min-w-200px">@sharedResource["وصف النشاط المشترك به"]</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#tblList").DataTable({
+            "proccessing": true,
+            "serverSide": true,
+            "ajax": {
+
+                url: "/admin/SubscriptionActivity/Index",
+                type: 'POST',
+                headers: { 'XSRF-TOKEN': $('@Html.AntiForgeryToken()').val() }
+            },
+            "columnDefs": [
+           
+                { "name": "SubscriptionActivityId", "data": "SubscriptionActivityId", "targets": 0, "visible": false },
+                { "name": "EventActivityTitle", "data": "EventActivityTitle", "targets": 1 },
+                { "name": "EventActivityDescription", "data": "EventActivityDescription", "targets": 2, "visible": true }
+                 
+
+
+            ],
+            "order": [[1, "desc"]],
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom":
+                "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+
+                "<'table-responsive'tr>" +
+
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">",
+            "createdRow": function (row, data, dataIndex) {
+                var tdElements = $(row).find('td');
+                $(tdElements[tdElements.length - 1]).addClass('text-end');
+            }
+        });
+    });
+
+        
+</script>
